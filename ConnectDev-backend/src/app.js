@@ -11,7 +11,10 @@ require("./utils/cronjob");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://connect-dev-mern-55yfl3li3-kundan13shinde-6477s-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
