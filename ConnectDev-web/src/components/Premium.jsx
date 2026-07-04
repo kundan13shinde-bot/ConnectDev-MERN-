@@ -1,9 +1,11 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
+import { FaCrown } from "react-icons/fa";
 
 const Premium = () => {
   const [isUserPremium, setIsUserPremium] = useState(false);
+
   useEffect(() => {
     verifyPremiumUser();
   }, []);
@@ -50,35 +52,57 @@ const Premium = () => {
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
+
   return isUserPremium ? (
-    "You're are already a premium user"
+    <div className="text-center text-3xl font-bold mt-20">
+      🎉 You're already a Premium User!
+    </div>
   ) : (
     <div className="m-10">
       <div className="flex w-full">
+
+        {/* Silver Card */}
         <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
-          <h1 className="font-bold text-3xl">Silver Membership</h1>
+
+          <div className="flex items-center gap-3">
+            <FaCrown className="text-3xl text-gray-300" />
+            <h1 className="font-bold text-3xl">Silver Membership</h1>
+          </div>
+
           <ul>
-            <li> - Chat with other people</li>
-            <li> - 100 connection Requests per day</li>
-            <li> - Blue Tick</li>
-            <li> - 3 months</li>
+            <li>- Chat with other people</li>
+            <li>- 100 Connection Requests per day</li>
+            <li>- Blue Tick</li>
+            <li>- 3 Months</li>
           </ul>
+
           <button
-            onClick={() => handleBuyClick("gold")}
+            onClick={() => handleBuyClick("silver")}
             className="btn btn-secondary"
           >
             Buy Silver
           </button>
         </div>
-        <div className="divider divider-horizontal">OR</div>
+
+        <div className="divider divider-horizontal text-lg font-bold">
+          OR
+        </div>
+
+        {/* Gold Card */}
         <div className="card bg-base-300 rounded-box grid h-80 flex-grow place-items-center">
-          <h1 className="font-bold text-3xl">Gold Membership</h1>
+
+          <div className="flex items-center gap-3">
+            <FaCrown className="text-3xl text-yellow-400" />
+            <h1 className="font-bold text-3xl">Gold Membership</h1>
+          </div>
+
           <ul>
-            <li> - Chat with other people</li>
-            <li> - Inifiniye connection Requests per day</li>
-            <li> - Blue Tick</li>
-            <li> - 6 months</li>
+            <li>- Chat with other people</li>
+            <li>- Infinite Connection Requests per day</li>
+            <li>- Blue Tick</li>
+            <li>- 6 Months</li>
           </ul>
+
           <button
             onClick={() => handleBuyClick("gold")}
             className="btn btn-primary"
@@ -86,8 +110,10 @@ const Premium = () => {
             Buy Gold
           </button>
         </div>
+
       </div>
     </div>
   );
 };
+
 export default Premium;
